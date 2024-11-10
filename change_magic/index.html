@@ -1,0 +1,73 @@
+<!Doctype HTML>
+<html lang="kr">
+
+<head>
+  <title>카드 확인 페이지</title>
+  <meta charset="utf-8">
+  <meta property="og:url"                content="grassyeochi.github.io/change_magic/index.html" />
+  <meta property="og:type"               content="website" />
+  <meta property="og:title"              content="카드 확인" />
+  <meta property="og:description"        content="카드 확인" />
+  <meta property="og:image"              content="../thumnail.jpg" />
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <style>
+        .image {
+            width: 100%;
+            height: 100%;
+            display: none;
+        }
+
+        #passwordField{
+            display : none;
+        }
+    </style>
+</head>
+
+<body style="text-align:center">
+    <!-- 이미지 A -->
+    <img src="thumnail.jpg" alt="default" class="image" id="default_image">
+
+    <!-- 이미지 B -->
+    <img src="reverse_jh.jpg" alt="reverse" class="image" id="reverse_image">
+
+    <div id="passwordField">
+        <input type="text" id="password_id">
+        <button id="resetbutton" onclick="checkPassword()">확인</button>
+    </div>
+
+  <script>
+        function resetVisitedStatus() {
+            localStorage.setItem("visitedBefore", "false");
+            alert('초기화되었습니다.');
+        }
+        
+        function showImage(imageId) {
+            var images = document.getElementsByClassName("image");
+            for (var i = 0; i < images.length; i++) {
+                images[i].style.display = "none";
+            }
+            document.getElementById(imageId).style.display = "block";
+        }
+
+        function checkPassword() {
+            var p = document.getElementById("password_id").value;
+            if (p == "heart_j"){
+                resetVisitedStatus();
+            }
+        }
+
+        window.onload = function() {
+            var visitedBefore = localStorage.getItem("visitedBefore");
+            if (visitedBefore == "true") {
+                showImage("reverse_image");
+                document.getElementById("passwordField").style.display = "block";
+            } else {
+                showImage("default_image");
+                localStorage.setItem("visitedBefore", "true");
+            }
+        };
+    </script>
+
+</body>
+</html>
