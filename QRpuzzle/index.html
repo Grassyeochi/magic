@@ -1,0 +1,51 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <title>QRpuzzle</title>
+  <meta charset="utf-8">
+  <meta property="og:url"                content="grassyeochi.github.io/QRpuzzle/index.html" />
+  <meta property="og:type"               content="website" />
+  <meta property="og:title"              content="퍼즐 완성!" />
+  <meta property="og:description"        content="축하합니다!" />
+  <meta property="og:image"              content="../thumnail.jpg" />
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  
+  <style>
+    input {
+    width: 900px;
+    height: 1300px;
+    }
+  </style>
+  
+</head>
+
+<body style="text-align:center;font-size:30px;">
+  </br></br></br></br></br>
+  
+  <p>퍼즐 완성!</p>
+  <input id="end_img" type="image" src="thumbs_up.jpg"/>
+
+  <script>
+
+    const div = document.getElementById('end_img');
+    div.addEventListener('mouseup', (event) => {
+      setTimeout(function(){document.body.style.background = "url('Jheart-background.png') no-repeat 0 0"}, 5000);
+    });
+
+    div.addEventListener("touchend", (event) => {
+      setTimeout(function(){document.body.style.background = "url('Jheart-background.png') no-repeat 0 0"}, 5000);
+    });
+
+    
+    window.history.forward(); function noBack(){
+    window.history.forward();
+    }
+    
+  </script>
+  
+  </br></br></br></br></br>
+    
+</body>
+</html>
