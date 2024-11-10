@@ -1,0 +1,37 @@
+<!doctype HTML>
+<html>
+
+<head>
+<title>QRcase</title>
+<meta charset="utf-8">
+<meta property="og:url"                content="grassyeochi.github.io/card-predict/predict.html" />
+<meta property="og:type"               content="website" />
+<meta property="og:title"              content="예언 페이지" />
+<meta property="og:description"        content="카드가 예언되어 있는 페이지입니다." />
+<meta property="og:image"              content="thumnail.jpg" />
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+</head>
+
+<body style="text-align:center;font-size:30px;">
+
+<h1>관객님이 고르신 카드를 제가 이 페이지에 예언해 두었습니다.</h1></br>
+<h3>밑의 버튼을 눌러주세요.</h3></br></br>
+  
+<input type=button style="width:450pt; height:50pt; font-size:30pt;" value="관객님이 고르신 카드는 바로" onclick="myFunction()" />
+
+</br></br>
+<p id=value style="font-size:300%;display:inline;"></p>
+<p id=suit style="font-size:300%;display:inline; color:red"></p>
+<p id=comment style="font-size:300%;display:inline"></p>
+
+<script>
+function myFunction() {
+document.getElementById("value").innerHTML = "J";
+document.getElementById("suit").innerHTML = "♥";
+document.getElementById("comment").innerHTML = "입니다!";
+}
+</script>
+
+</body>
+</html>
