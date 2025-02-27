@@ -1,10 +1,9 @@
-
 <!DOCTYPE html>
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Magic Trick</title>
+    <title>난수생성기 - Google 검색</title>
     <style>
         body {
             margin: 0;
@@ -12,7 +11,7 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background-color: black;
+            background-color: white;
         }
         img {
             max-width: 100%;
@@ -23,8 +22,26 @@
     </style>
 </head>
 <body>
-    <img id="magicImage" src="Chrome_3.png" alt="Magic Image">
+    <img id="magicImage" src="Chrome_1.png" alt="Magic Image">
     <script>
+        const preloadImages = [
+            "Chrome_1.png", "Chrome_2.png", "Chrome_3.png", "Chrome_4.png", "Chrome_5.png",
+            "Chrome_6.png", "Chrome_7.png", "Chrome_8.png", "Chrome_9.png", "Chrome_10.png"
+        ];
+        let imgElement = document.getElementById("magicImage");
+        let index = 0;
+
+        function showInitialSequence() {
+            if (index < preloadImages.length) {
+                imgElement.src = preloadImages[index];
+                index++;
+                setTimeout(showInitialSequence, 10);
+            } else {
+                imgElement.src = "Chrome_3.png";
+            }
+        }
+        showInitialSequence();
+
         const imageSequence = [
             ["Chrome_2.png"],
             ["Chrome_3.png", "Chrome_4.png", "Chrome_5.png", "Chrome_6.png", "Chrome_7.png", "Chrome_8.png"],
@@ -40,7 +57,7 @@
 
                 function changeImage() {
                     if (index < images.length) {
-                        document.getElementById("magicImage").src = images[index];
+                        imgElement.src = images[index];
                         index++;
                         setTimeout(changeImage, 100);
                     }
