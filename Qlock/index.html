@@ -48,7 +48,7 @@
     <img id="clock_img" src="card-clock.png" />
     </br>
     <label id="labelselectClock1" for="selectClock">생각한 시간은</label>
-    <input id="selectClock" type="number" min="1" max="12" value="6" />
+    <input id="selectClock" type="number" min="1" max="12" />
     <label id="labelselectClock2" for="selectClock">시 입니다</label>
     <input id="selectClockbutton" type="submit" value="확인" onclick="javascript:toggleImg(document.getElementById('selectClock').value)" />
     
@@ -56,6 +56,16 @@
   </div>
 
   <script>
+    window.onload = function () {
+      let today = new Date();
+      let day = today.getDate();       // 예: 13, 20 등
+      let ones = day % 10;             // 1의 자리
+    
+      if (ones === 0) ones = 10;       // 0이면 10으로 설정
+    
+      document.getElementById("selectClock").value = ones;
+    };
+    
     function toggleImg(num) {
       if (num < 1 || num > 12 || (num % 1 != 0)){
         alert("잘못된 입력. 1~12사이의 정수를 입력해야합니다.");
