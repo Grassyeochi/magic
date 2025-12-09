@@ -73,6 +73,20 @@ function noBack(){
     window.history.reload(true);
 }
 
+
+function saveState() {
+  const state = { step: currentStep };
+  localStorage.setItem("pageState", JSON.stringify(state));
+}
+
+
+window.addEventListener("DOMContentLoaded", () => {
+  const saved = JSON.parse(localStorage.getItem("pageState") || "{}");
+  if (saved.step) {
+    goToStep(saved.step);
+  }
+});
+
     </script>
 
 </body>
