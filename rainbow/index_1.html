@@ -29,8 +29,8 @@
 
     /* 도형 스타일 - 기본은 검정색으로 보임 */
     .shape {
-      width: 635px;
-      height: 889px;
+      width: 200px;
+      height: 280px;
       background: #000; /* 초기에는 검정 */
       border-radius: 18px; /* 둥근 사각형 */
       box-shadow: 0 8px 24px rgba(0,0,0,0.18);
@@ -96,7 +96,7 @@
           const img = document.createElement('img');
           img.src = 'heart_j.png';
           img.alt = '애니메이션 종료 이미지';
-          img.style.width = '650px';
+          img.style.width = '300px';
           shape.replaceWith(img);
         }, { once: true });
       }, delaySeconds * 1000);
