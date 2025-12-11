@@ -56,6 +56,9 @@
   </div>
 
   <script>
+    const input = document.getElementById("selectClock");
+    const button = document.getElementById("selectClockbutton");
+    
     window.onload = function () {
       let today = new Date();
       let day = today.getDate();       // 예: 13, 20 등
@@ -82,6 +85,13 @@
 
       return;
     }
+
+    input.addEventListener("keydown", function(event) {
+        if (event.key === "Enter") {
+            event.preventDefault();   // 엔터의 기본 행동 방지
+            button.click();           // 확인 버튼 클릭 실행
+        }
+    });
     
     window.history.forward(); 
     function noBack(){
