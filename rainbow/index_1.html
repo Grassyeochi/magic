@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>사각형 마술</title>
+  <meta charset="utf-8">
+  <meta property="og:url"                content="grassyeochi.github.io/magic/rainbow/index_1.html" />
+  <meta property="og:type"               content="website" />
+  <meta property="og:title"              content="사각형 마술" />
+  <meta property="og:description"        content="사각형 마술" />
+  <meta property="og:image"              content="./thumnail.jpg" />
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <style>
+    /* 기본 페이지 레이아웃 */
+    body{
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans KR", "Malgun Gothic", "Apple SD Gothic Neo", sans-serif;
+      background: #FFFFF0;
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 18px;
+      color: #111;
+    }
+
+    /* 도형 스타일 - 기본은 검정색으로 보임 */
+    .shape {
+      width: 635px;
+      height: 889px;
+      background: #000; /* 초기에는 검정 */
+      border-radius: 18px; /* 둥근 사각형 */
+      box-shadow: 0 8px 24px rgba(0,0,0,0.18);
+      transition: none;
+    }
+
+    /* 무지개 색으로 점멸시키는 애니메이션 (계속 반복) */
+    /* steps(1)로 설정하면 색이 순간적으로 바뀌어 '점멸' 효과에 가깝습니다. */
+    .shape.rainbow {
+      animation: rainbow 0.5s steps(1) 10;
+    }
+
+    @keyframes rainbow {
+      0%   { background: #ff0000; }
+      12%  { background: #ff7f00; }
+      25%  { background: #ffff00; }
+      37%  { background: #00ff00; }
+      50%  { background: #0000ff; }
+      62%  { background: #4b0082; }
+      75%  { background: #8f00ff; }
+      87%  { background: #000000; }
+      100% { background: #ffffff; }
+    } /* 빨강 */
+      14%  { background: #ff7f00; } /* 주황 */
+      28%  { background: #ffff00; } /* 노랑 */
+      42%  { background: #00ff00; } /* 초록 */
+      57%  { background: #0000ff; } /* 파랑 */
+      71%  { background: #4b0082; } /* 남보라(인디고) */
+      85%  { background: #8f00ff; } /* 보라 */
+      100% { background: #ff0000; } /* 루프 */
+    }
+
+    /* 접근성: 사용자가 감각적 움직임을 줄이도록 설정한 경우 애니메이션을 비활성화 */
+    @media (prefers-reduced-motion: reduce) {
+      .shape.rainbow { animation: none; }
+    }
+
+    .countdown {
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+  <div class="shape" id="shape" aria-hidden="false"></div>
+
+  <script>
+    (function(){
+      const delaySeconds = 10; // 10초 대기
+      const shape = document.getElementById('shape');
+
+      // 초 단위 카운트다운(선택적) 표시
+      let remaining = delaySeconds;
+
+      const tick = setInterval(()=>{
+        remaining -= 1;
+        if(remaining <= 0) clearInterval(tick);
+      }, 1000);
+
+      // 10초 후 애니메이션 클래스 추가
+      setTimeout(()=>{
+        shape.classList.add('rainbow');
+        shape.addEventListener('animationend', ()=>{
+          const img = document.createElement('img');
+          img.src = 'J하트.png';
+          img.alt = '애니메이션 종료 이미지';
+          img.style.width = '650px';
+          shape.replaceWith(img);
+        }, { once: true });
+      }, delaySeconds * 1000);
+    })();
+  </script>
+</body>
+</html>
