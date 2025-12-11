@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>사각형 마술</title>
+  <meta charset="utf-8">
+  <meta property="og:url"                content="grassyeochi.github.io/magic/rainbow/index.html" />
+  <meta property="og:type"               content="website" />
+  <meta property="og:title"              content="사각형 마술" />
+  <meta property="og:description"        content="사각형 마술" />
+  <meta property="og:image"              content="../thumnail.jpg" />
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <style>
+    /* 기본 페이지 레이아웃 */
+    body{
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans KR", "Malgun Gothic", "Apple SD Gothic Neo", sans-serif;
+      background: #FFFFF0;
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 18px;
+      color: #111;
+    }
+
+    /* 도형 스타일 - 기본은 검정색으로 보임 */
+    .shape {
+      width: 635px;
+      height: 889px;
+      background: #000; /* 초기에는 검정 */
+      border-radius: 18px; /* 둥근 사각형 */
+      box-shadow: 0 8px 24px rgba(0,0,0,0.18);
+      transition: none;
+    }
+
+    /* 접근성: 사용자가 감각적 움직임을 줄이도록 설정한 경우 애니메이션을 비활성화 */
+    @media (prefers-reduced-motion: reduce) {
+      .shape.rainbow { animation: none; }
+    }
+
+    .countdown {
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+  <div class="shape" id="shape" aria-hidden="false"></div>
+</body>
+</html>
