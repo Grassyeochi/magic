@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>연결 중...</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f8f9fa;
+        }
+        .container {
+            text-align: center;
+            padding: 20px;
+        }
+        .loader {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #3498db;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px;
+        }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        .btn {
+            display: none; /* 기본적으로 숨김 */
+            margin-top: 20px;
+            padding: 15px 30px;
+            background-color: #28a745;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div id="loader" class="loader"></div>
+    <h2 id="msg">전화 앱으로 연결 중입니다...</h2>
+    <p>잠시 후 전화 앱이 실행됩니다.</p>
+    
+    <a href="#" id="backupBtn" class="btn">전화 앱 직접 열기</a>
+</div>
+
+<script>
+    // 1. 전화번호 Base64 인코딩 데이터 (예: 010-1234-5678)
+    // 직접 변경하려면: btoa("01012345678") 명령어로 얻은 값을 넣으세요.
+    const secretNum = "MDEwMTIzNDU2Nzg="; 
+
+    window.onload = function() {
+        try {
+            // 2. Base64 복호화
+            const telNo = atob(secretNum);
+            const telUrl = "tel:" + telNo;
+
+            // 예비 버튼에 링크 설정
+            const btn = document.getElementById('backupBtn');
+            btn.href = telUrl;
+
+            // 3. 자동 리다이렉션 시도 (1초 뒤)
+            setTimeout(() => {
+                window.location.href = telUrl;
+                
+                // 브라우저가 자동 실행을 차단했을 경우를 대비해 2초 후 버튼 표시
+                setTimeout(() => {
+                    document.getElementById('loader').style.display = 'none';
+                    document.getElementById('msg').innerText = "연결이 차단되었나요?";
+                    btn.style.display = 'inline-block';
+                }, 2000);
+            }, 1000);
+
+        } catch (e) {
+            document.getElementById('msg').innerText = "오류가 발생했습니다.";
+        }
+    };
+</script>
+
+</body>
+</html>
